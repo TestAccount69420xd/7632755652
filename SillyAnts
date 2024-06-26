@@ -1,5 +1,3 @@
--- bro wtf
-
 local ConvertFunctions = {
     Cumify = function(target)
         for i, v in target:GetDescendants() do
@@ -46,7 +44,7 @@ local ConvertFunctions = {
 
 local function OnDescendantAdded(desc)
     coroutine.wrap(function() -- pls no yield 🥺
-        task.wait(0.2) -- let stuff load idk
+        task.wait(0.3) -- let stuff load idk
 
         if desc:IsA('Model') and desc:FindFirstChild('Humanoid') and desc:IsDescendantOf(workspace.Ant['Carpenter Ant']) then
             ConvertFunctions.Cumify(desc)
