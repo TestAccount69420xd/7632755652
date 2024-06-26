@@ -1,3 +1,5 @@
+-- bro wtf
+
 local ConvertFunctions = {
     Cumify = function(target)
         for i, v in target:GetDescendants() do
@@ -37,6 +39,38 @@ local ConvertFunctions = {
 
             if v:IsA('Humanoid') then
                 v.DisplayName = 'Piss '..v.DisplayName
+            end
+        end
+    end,
+
+    Spidermanify = function(target)
+        for i, v in target:GetDescendants() do
+            if v:IsA('MeshPart') then
+                if string.find(v.Name, 'Foot') or string.find(v.Name, 'Leg') then
+                    v.Color = Color3.fromRGB(13, 105, 172)
+                else
+                    if v.Name ~= 'Eyes' and v.Name ~= 'RightFang' and v.Name ~= 'LeftFang' then
+                        v.Color = Color3.fromRGB(196, 40, 28)
+                    end
+                end
+            end
+
+            if v:IsA('Humanoid') then
+                v.DisplayName = 'Spiderman '..v.Parent.Name
+            end
+        end
+    end,
+
+    BBCSpiderify = function(target)
+        for i, v in target:GetDescendants() do
+            if v:IsA('BasePart') then
+                v.Color = Color3.fromRGB(62, 34, 21)
+                v.Material = Enum.Material.SmoothPlastic
+                v.Reflectance = 0.05
+            end
+
+            if v:IsA('Humanoid') then
+                v.DisplayName = 'BBC Spider '..v.Parent.Name
             end
         end
     end
@@ -80,6 +114,22 @@ local function OnDescendantAdded(desc)
 
         if desc:IsA('Model') and desc:FindFirstChild('Head') and desc.Head.Color == Color3.fromRGB(238, 199, 79) and desc:IsDescendantOf(workspace.Carcasses) then
             ConvertFunctions.Pissify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Humanoid') and (desc:IsDescendantOf(workspace.Special.Spiderling) or desc:IsDescendantOf(workspace.Special.Spider)) then
+            ConvertFunctions.Spidermanify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Torso') and desc.Torso.Color == Color3.fromRGB(57, 57, 57) and desc:IsDescendantOf(workspace.Carcasses) then
+            ConvertFunctions.Spidermanify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Humanoid') and desc:IsDescendantOf(workspace.Special.BroodMother) then
+            ConvertFunctions.BBCSpiderify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Torso') and desc.Torso.Color == Color3.fromRGB(0, 0, 0) and desc:IsDescendantOf(workspace.Carcasses) then
+            ConvertFunctions.BBCSpiderify(desc)
         end
     end)()
 end
