@@ -1,0 +1,95 @@
+-- bro wtf
+
+local ConvertFunctions = {
+    Cumify = function(target)
+        for i, v in target:GetDescendants() do
+            if v:IsA('MeshPart') then
+                v.TextureID = ''
+                v.Color = Color3.fromRGB(255, 255, 255)
+                v.Material = Enum.Material.Glass
+            end
+
+            if v:IsA('Humanoid') then
+                v.DisplayName = 'Cum '..v.DisplayName
+            end
+        end
+    end,
+
+    Ketchupify = function(target)
+        for i, v in target:GetDescendants() do
+            if v:IsA('MeshPart') then
+                v.TextureID = ''
+                v.Color = Color3.fromRGB(236, 6, 6)
+                v.Material = Enum.Material.Glass
+            end
+
+            if v:IsA('Humanoid') then
+                v.DisplayName = 'Ketchup '..v.DisplayName
+            end
+        end
+    end,
+
+    Pissify = function(target)
+        for i, v in target:GetDescendants() do
+            if v:IsA('MeshPart') then
+                v.TextureID = ''
+                v.Color = Color3.fromRGB(205, 205, 34) -- some real pissy fuckers
+                v.Material = Enum.Material.Glass
+            end
+
+            if v:IsA('Humanoid') then
+                v.DisplayName = 'Piss '..v.DisplayName
+            end
+        end
+    end
+}
+
+local function OnDescendantAdded(desc)
+    coroutine.wrap(function() -- pls no yield 🥺
+        task.wait(0.1) -- let stuff load idk
+
+        if desc:IsA('Model') and desc:FindFirstChild('Humanoid') and desc:IsDescendantOf(workspace.Ant['Carpenter Ant']) then
+            ConvertFunctions.Cumify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Humanoid') and desc:IsDescendantOf(workspace.Ant['Fire Ant']) then
+            ConvertFunctions.Ketchupify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Humanoid') and desc:IsDescendantOf(workspace.Ant['Yellow Crazy Ant']) then
+            ConvertFunctions.Pissify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Torso') and desc.Torso:IsA('MeshPart') and desc.Torso.MeshId == 'rbxassetid://6375904736' and desc:IsDescendantOf(workspace.Carcasses) then
+            ConvertFunctions.Cumify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Torso') and desc.Torso:IsA('MeshPart') and desc.Torso.MeshId == 'rbxassetid://6375904931' and desc:IsDescendantOf(workspace.Carcasses) then
+            ConvertFunctions.Ketchupify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Torso') and desc.Torso:IsA('MeshPart') and desc.Torso.MeshId == 'rbxassetid://6375905164' and desc:IsDescendantOf(workspace.Carcasses) then
+            ConvertFunctions.Pissify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Head') and desc.Head.Color == Color3.fromRGB(66, 63, 61) and desc:IsDescendantOf(workspace.Carcasses) then
+            ConvertFunctions.Cumify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Head') and desc.Head.Color == Color3.fromRGB(80, 20, 12) and desc:IsDescendantOf(workspace.Carcasses) then
+            ConvertFunctions.Ketchupify(desc)
+        end
+
+        if desc:IsA('Model') and desc:FindFirstChild('Head') and desc.Head.Color == Color3.fromRGB(238, 199, 79) and desc:IsDescendantOf(workspace.Carcasses) then
+            ConvertFunctions.Pissify(desc)
+        end
+    end)()
+end
+
+for i, desc in workspace:GetDescendants() do
+    OnDescendantAdded(desc)
+end
+
+workspace.DescendantAdded:Connect(function(desc)
+    OnDescendantAdded(desc)
+end)
