@@ -1,5 +1,1 @@
-if AntHaxxLite ~= nil and AntHaxxLite == true then
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/TestAccount69420xd/7632755652/main/ALV2Lite'))()
-else
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/TestAccount69420xd/7632755652/main/ALV2Normal'))()
-end
+loadstring(game:HttpGet('https://raw.githubusercontent.com/TestAccount69420xd/7632755652/main/ALV2Normal'))()
