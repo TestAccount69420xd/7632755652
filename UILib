@@ -1,4 +1,5 @@
 -- Bracket UI Library
+-- Modified for AntHaxx
 
 local Library = {Toggle = true,FirstTab = nil,TabCount = 0,ColorTable = {}}
 
