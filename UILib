@@ -496,7 +496,7 @@ function Library:CreateWindow(Config, Parent)
 				end)
 
 				Slider.InputEnded:Connect(function(Input)
-					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.TouchEnded then
+					if Input.UserInputType == Enum.UserInputType.MouseButton1 or Input.UserInputType == Enum.UserInputType.Touch then
 						Dragging = false
 					end
 				end)
