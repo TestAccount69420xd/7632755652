@@ -388,7 +388,7 @@ function Library:CreateWindow(Config, Parent)
 				end
 
 				function ToggleInit:CreateKeybind(Bind,Callback)
-					if not IsMobile then end
+					if not IsMobile then
 						local KeybindInit = {}
 						Bind = Bind or "NONE"
 	
