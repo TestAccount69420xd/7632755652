@@ -513,12 +513,6 @@ function Library:CreateWindow(Config, Parent)
 					end
 				end)
 
-				UserInputService.TouchMoved:Connect(function(Input)
-					if Dragging then
-						Sliding(Input)
-					end
-				end)
-
 				UserInputService.InputChanged:Connect(function(Input)
 					if Dragging and (Input.UserInputType == Enum.UserInputType.MouseMovement or Input.UserInputType == Enum.UserInputType.Touch) then
 						Sliding(Input)
