@@ -393,8 +393,10 @@ function Library:CreateWindow(Config, Parent)
 					Toggle.Keybind.Text = "[ " .. Bind .. " ]"
 
 					Toggle.Keybind.MouseButton1Click:Connect(function()
-						Toggle.Keybind.Text = "[ ... ]"
-						WaitingForBind = true
+						if not UserInputService.TouchEnabled and UserInputService.KeyboardEnabled and UserInputService.MouseEnabled then
+							Toggle.Keybind.Text = "[ ... ]"
+							WaitingForBind = true
+						end
 					end)
 
 					Toggle.Keybind:GetPropertyChangedSignal("TextBounds"):Connect(function()
