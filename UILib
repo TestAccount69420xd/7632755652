@@ -514,9 +514,7 @@ function Library:CreateWindow(Config, Parent)
 				end)
 
 				UserInputService.TouchMoved:Connect(function(Input)
-					if Dragging then
-						Sliding(Input)
-					end
+					Sliding(Input)
 				end)
 
 				UserInputService.InputChanged:Connect(function(Input)
