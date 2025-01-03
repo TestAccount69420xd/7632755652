@@ -1,18 +1,12 @@
 -- Bracket UI Library
 -- Modified for AntHaxx
-print('ran lib')
+print('ran lib(2)')
 local Library = {Toggle = true,FirstTab = nil,TabCount = 0,ColorTable = {}}
 
 local RunService = game:GetService("RunService")
 local HttpService = game:GetService("HttpService")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
-
-local IsMobile = false
-
-if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled then
-    IsMobile = true
-end
 
 local function MakeDraggable(ClickObject, Object)
 	local Dragging = nil
@@ -399,9 +393,11 @@ function Library:CreateWindow(Config, Parent)
 					Toggle.Keybind.Text = "[ " .. Bind .. " ]"
 
 					Toggle.Keybind.MouseButton1Click:Connect(function()
-						if IsMobile then print('ismobile') return end
-						Toggle.Keybind.Text = "[ ... ]"
-						WaitingForBind = true
+						if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled then
+						else
+							Toggle.Keybind.Text = "[ ... ]"
+							WaitingForBind = true
+						end
 					end)
 
 					Toggle.Keybind:GetPropertyChangedSignal("TextBounds"):Connect(function()
