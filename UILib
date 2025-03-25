@@ -784,4 +784,10 @@ function Library:CreateWindow(Config, Parent)
 	return WindowInit
 end
 
+getgenv().AHUILib = {
+	Toggle = function()
+        Toggle(not Main.Visible)
+	end
+}
+
 return Library
