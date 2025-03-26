@@ -369,13 +369,19 @@ function Library:CreateWindow(Config, Parent)
 					end
 				end
 
-				if Default == nil then
-					function ToggleInit:SetState(State)
-						SetState(State)
-					end
-				else
-					SetState(DefaultLocal)
-				end
+				-- if Default == nil then
+				-- 	function ToggleInit:SetState(State)
+				-- 		SetState(State)
+				-- 	end
+				-- else
+				-- 	SetState(DefaultLocal)
+				-- end
+
+                SetState(DefaultLocal)
+                
+                function ToggleInit:SetState(State)
+                    SetState(State)
+                end
 
 				function ToggleInit:GetState(State)
 					return ToggleState
